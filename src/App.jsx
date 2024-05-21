@@ -7,7 +7,7 @@ function App() {
         <div className="App">
             <Header />
             <div>
-                And here is some text
+                And here is some text for test
             </div>
         </div>
     )
