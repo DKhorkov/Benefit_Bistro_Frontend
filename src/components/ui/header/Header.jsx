@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import logo from '../../../logo.svg';
 import './Header.css';
-import ListElement from "../ListElement";
-import Button from "../Button";
+import ListElement from '../list/ListElement';
+import Button from '../button/Button';
 
 
 const element = React.createElement
@@ -24,16 +24,16 @@ export default function Header() {
         console.log(info);
 
         // content поменяется только после следующего render, так что его использование далее в теле этой функции невозмонжо
-        setLoginCount(++loginCount)
+        setLoginCount((prevLoginCount) => (++prevLoginCount));
     }
 
     const ul = element(
         'ul',
-        null,
+        {key: 'ul'},
         [
-            <ListElement className='List-element' value={<img src={logo} className="Header-logo" alt="logo" />} />,
-            <ListElement className='List-element' value="BenefitBistro" />,
-            <ListElement className='List-element' value={'Login clicked: ' + loginCount} />
+            <ListElement key='logo' value={<img src={logo} className="Header-logo List-element" alt="logo" />} />,
+            <ListElement key='Brand' className='List-element' value="BenefitBistro" />,
+            <ListElement key='Counter' className='List-element' value={'Login clicked: ' + loginCount} />
         ]
     )
 
@@ -44,7 +44,7 @@ export default function Header() {
             ul,
 
             /* Использование второго типа синтекса через Children из React*/
-            <Button className='Header-button' onClick={() => handleLogin('Logging in')}>{loginButtonData}</ Button>
+            <Button key='Header-button' className='Header-button' onClick={() => handleLogin('Logging in')}>{loginButtonData}</ Button>
         ]
     )
 }
