@@ -1,17 +1,12 @@
-import React from "react";
+import React, {Fragment} from "react";
 import Header from "./components/ui/header/Header";
 
 
-function App() {
+export default function App() {
     return (
-        <div className="App">
+        // Избегаем ненужного div с помощью Fragment
+        <Fragment>
             <Header />
-            <div>
-                And here is some text for test
-            </div>
-        </div>
+        </ Fragment>
     )
 }
-
-
-export default App;
