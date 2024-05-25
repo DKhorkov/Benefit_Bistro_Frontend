@@ -1,9 +1,9 @@
-import React from 'react';
+import { createElement } from 'react';
 import './ListElement.css';
 
 
 export default function ListElement({ value, ...props }) {
-    return React.createElement(
+    return createElement(
         'li',
         { ...props },
         value

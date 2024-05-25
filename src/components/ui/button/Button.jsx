@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import './Button.css'
 
 
@@ -10,7 +10,7 @@ export default function Button({ name, children, ...props }) {
         buttonName = name;
     }
 
-    return React.createElement(
+    return createElement(
         "button",
         {...props, type: "button"},
         buttonName

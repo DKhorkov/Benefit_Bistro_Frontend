@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import logo from '../../../logo.svg';
-import './Header.css';
+import { useState, createElement } from 'react';
 import ListElement from '../list/ListElement';
 import Button from '../button/Button';
-
-
-const element = React.createElement
+import LoginModal from '../modal/login/LoginModal';
+import logo from '../../../logo.svg';
+import './Header.css';
 
 
 export default function Header() {
@@ -16,6 +14,8 @@ export default function Header() {
     // const setLoginCount = stateArray[1]  // Функция, которая меняет данное значение
     let [loginCount, setLoginCount] = useState(0);
 
+    let [LoginModalIsOpen, setLoginModalIsOpen] = useState(false);
+
     let loginButtonData = {
         name: "Login"
     }
@@ -25,9 +25,10 @@ export default function Header() {
 
         // content поменяется только после следующего render, так что его использование далее в теле этой функции невозмонжо
         setLoginCount((prevLoginCount) => (++prevLoginCount));
+        setLoginModalIsOpen(true)
     }
 
-    const ul = element(
+    const ul = createElement(
         'ul',
         {key: 'ul'},
         [
@@ -37,14 +38,24 @@ export default function Header() {
         ]
     )
 
-    return element(
+    return createElement(
         'header',
         {className: 'Header'},
         [
             ul,
 
             /* Использование второго типа синтекса через Children из React*/
-            <Button key='Header-button' className='Header-button' onClick={() => handleLogin('Logging in')}>{loginButtonData}</ Button>
+            <Button
+                key='Login-button'
+                className='Login-button'
+                onClick={() => handleLogin('Logging in')}
+            >{loginButtonData}</ Button>,
+
+            <LoginModal
+                key='Login-modal'
+                isOpen={LoginModalIsOpen}
+                onModalClose={() => setLoginModalIsOpen(false)}
+            />
         ]
     )
 }

@@ -1,19 +1,26 @@
-.Header-button {
+.Login-button {
     margin: 2rem;
     background-color: green;
     border: green solid 20px;
     border-radius: 20px;
 }
 
-.Header-button:hover {
+.Login-button:hover {
     cursor: pointer;
     color: yellow;
     background-color: blue;
     border-color: blue;
 }
 
-.Header-button:active {
+.Login-button:active {
     color: yellow;
     background-color: red;
     border-color: red;
+}
+
+.CLose-button {
+    margin-left: 94%;
+    padding-top: -20%;
+    background-color: red;
+    color: white;
 }
