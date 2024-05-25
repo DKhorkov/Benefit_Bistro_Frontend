@@ -1,18 +1,19 @@
-import { createElement } from 'react';
+import PropTypes from 'prop-types'
 import './Button.css'
 
+export default function Button({ children, onClick, variant = 'primary' }) {
+  return (
+    <button
+      className={'button ' + variant}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  )
+}
 
-export default function Button({ name, children, ...props }) {
-    let buttonName;
-    if (children) {
-        buttonName = children.name;
-    } else {
-        buttonName = name;
-    }
-
-    return createElement(
-        "button",
-        {...props, type: "button"},
-        buttonName
-    )
+Button.propTypes = {
+  children: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  variant: PropTypes.string
 }

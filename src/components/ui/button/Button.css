@@ -1,24 +1,24 @@
-.Login-button {
+.button.primary {
     margin: 2rem;
     background-color: green;
     border: green solid 20px;
     border-radius: 20px;
 }
 
-.Login-button:hover {
+.button.primary:hover {
     cursor: pointer;
     color: yellow;
     background-color: blue;
     border-color: blue;
 }
 
-.Login-button:active {
+.button.primary:active {
     color: yellow;
     background-color: red;
     border-color: red;
 }
 
-.CLose-button {
+.close-button {
     margin-left: 94%;
     padding-top: -20%;
     background-color: red;
