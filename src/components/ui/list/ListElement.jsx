@@ -6,5 +6,5 @@ export default function ListElement({ children }) {
 }
 
 ListElement.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]).isRequired
+  children: PropTypes.node.isRequired
 }

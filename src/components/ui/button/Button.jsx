@@ -13,7 +13,7 @@ export default function Button({ children, onClick, variant = 'primary' }) {
 }
 
 Button.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
   variant: PropTypes.string
 }
