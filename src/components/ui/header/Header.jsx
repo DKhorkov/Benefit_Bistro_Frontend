@@ -9,7 +9,7 @@ export default function Header() {
   let [loginModalIsOpen, setLoginModalIsOpen] = useState(false)
 
   function handleLogin() {
-    // content поменяется только после следующего render, так что его использование далее в теле этой функции невозмонжо
+    // content поменяется только после следующего render, так что его использование далее в теле этой функции невозможно
     setLoginCount((prevLoginCount) => ++prevLoginCount)
     setLoginModalIsOpen(true)
   }

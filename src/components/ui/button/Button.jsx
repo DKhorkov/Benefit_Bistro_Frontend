@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
 import './Button.css'
 
-export default function Button({ children, onClick, variant = 'primary' }) {
+export default function Button({ children, onClick, variant = 'primary', buttonType = 'button' }) {
   return (
     <button
       className={'button ' + variant}
       onClick={onClick}
+      type={buttonType}
     >
       {children}
     </button>
@@ -15,5 +16,6 @@ export default function Button({ children, onClick, variant = 'primary' }) {
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
-  variant: PropTypes.string
+  variant: PropTypes.string,
+  buttonType: PropTypes.string
 }
