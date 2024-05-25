@@ -1,11 +1,10 @@
-import { createElement } from 'react';
-import './ListElement.css';
+import PropTypes from 'prop-types'
+import './ListElement.css'
 
+export default function ListElement({ children }) {
+  return <li className="list-element">{children}</li>
+}
 
-export default function ListElement({ value, ...props }) {
-    return createElement(
-        'li',
-        { ...props },
-        value
-    )
+ListElement.propTypes = {
+  children: PropTypes.node.isRequired
 }

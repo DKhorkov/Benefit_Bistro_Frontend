@@ -1,45 +1,43 @@
-import { createElement } from 'react';
-import { createPortal } from "react-dom";
-import { useRef, useEffect } from "react";
-import Button from "../../button/Button";
+import { createPortal } from 'react-dom'
+import { useRef, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import Button from '../../button/Button'
 import './LoginModal.css'
 
-
 export default function LoginModal({ isOpen, onModalClose }) {
-    const loginModalBackDrop = useRef()
+  const loginModalBackDrop = useRef()
 
-    function loginModalEffectHandler() {
-        if (isOpen) {
-            loginModalBackDrop.current?.showModal()
-        } else {
-            loginModalBackDrop.current?.close()
-        }
+  function loginModalEffectHandler() {
+    if (isOpen) {
+      loginModalBackDrop.current?.showModal()
+    } else {
+      loginModalBackDrop.current?.close()
     }
+  }
 
-    // Эффект срабатывает при событии, но уже после рендеринга всех элементов.
-    useEffect(
-        loginModalEffectHandler,
-        [isOpen],
-    )
+  // Эффект срабатывает при событии, но уже после рендеринга всех элементов.
+  useEffect(loginModalEffectHandler, [isOpen])
 
-    const closeButton = createElement(
-        'div',
-        {key: 'closeButtonDiv'},
-        <Button onClick={onModalClose} key='Close-button' className='CLose-button'>{ {name: 'Close'} }</Button>
-    )
+  const loginModal = (
+    <dialog
+      className="login-modal"
+      ref={loginModalBackDrop}
+    >
+      <Button
+        onClick={onModalClose}
+        variant="close-button"
+      >
+        Close
+      </Button>
+    </dialog>
+  )
 
-    const loginModal = createElement(
-        'dialog',
-        { className: 'Login-modal', ref: loginModalBackDrop, key: 'login-modal' },
-        [
-            closeButton,
-        ]
-    )
+  // Модалки должны открываться НАД остальными элементами, поэтому лучше их создавать таким образом,
+  // привязывая к элементу, который находится в самом начале верстки (index.html)
+  return createPortal(loginModal, document.getElementById('login-modal'))
+}
 
-    // Модалки должны открываться НАД остальными элементами, поэтому лучше их создавать таким образом,
-    // привязывая к элементу, который находится в самом начале верстки (index.html)
-    return createPortal(
-        loginModal,
-        document.getElementById('Login-modal')
-    )
+LoginModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onModalClose: PropTypes.func.isRequired
 }
