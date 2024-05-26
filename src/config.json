@@ -1,7 +1,7 @@
 {
   "requests" : {
     "login": {
-      "url": "http://localhost:8000/auth/login",
+      "url": "http://localhost:8000/users/login",
       "method": "POST"
     },
     "headers": {

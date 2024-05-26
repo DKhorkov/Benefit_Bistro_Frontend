@@ -14,7 +14,7 @@ export default function Input({ inputType, inputId, inputName, inputValue }) {
 
 Input.propTypes = {
   inputType: PropTypes.string.isRequired,
-  inputId: PropTypes.number,
+  inputId: PropTypes.string,
   inputName: PropTypes.string,
   inputValue: PropTypes.string
 }

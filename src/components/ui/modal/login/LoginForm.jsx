@@ -2,32 +2,26 @@ import Form from '../../form/Form.jsx'
 import Label from '../../label/Label'
 import Input from '../../input/Input.jsx'
 import Button from '../../button/Button.jsx'
-import config from '../../../../config.json'
+import login from '../../../../api/login.js'
 import './LoginForm.css'
 
-async function handleSubmit(event) {
-  event.preventDefault()
+export default function LoginForm() {
+  async function handleSubmit(event) {
+    event.preventDefault()
 
-  const requestOptions = {
-    method: config.requests.login.method,
-    headers: config.requests.headers,
-    credentials: config.requests.credentials,
-    body: JSON.stringify({
+    const loginParams = {
       username: event.target.elements.username.value,
       password: event.target.elements.password.value
-    })
+    }
+
+    const response = await login(loginParams.username, loginParams.password)
+    if (!response.ok) {
+      alert(response.statusText)
+    } else {
+      alert('Вы были успешно авторизованы!')
+    }
   }
 
-  const response = await fetch(config.requests.login.url, requestOptions)
-
-  if (!response.ok) {
-    alert(response.statusText)
-  } else {
-    alert('Вы были успешно авторизованы!')
-  }
-}
-
-export default function LoginForm() {
   return (
     <Form onSubmit={handleSubmit}>
       <Label htmlFor="username">Username или email:</Label>
