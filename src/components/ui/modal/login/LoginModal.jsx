@@ -2,9 +2,10 @@ import { createPortal } from 'react-dom'
 import { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Button from '../../button/Button'
+import LoginForm from './LoginForm.jsx'
 import './LoginModal.css'
 
-export default function LoginModal({ isOpen, onModalClose }) {
+export default function LoginModal({ isOpen, onModalClose, afterLoginFunc }) {
   const loginModalBackDrop = useRef()
 
   function loginModalEffectHandler() {
@@ -29,6 +30,8 @@ export default function LoginModal({ isOpen, onModalClose }) {
       >
         Close
       </Button>
+
+      <LoginForm afterLoginFunc={afterLoginFunc} />
     </dialog>
   )
 
@@ -39,5 +42,6 @@ export default function LoginModal({ isOpen, onModalClose }) {
 
 LoginModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onModalClose: PropTypes.func.isRequired
+  onModalClose: PropTypes.func.isRequired,
+  afterLoginFunc: PropTypes.func.isRequired
 }
