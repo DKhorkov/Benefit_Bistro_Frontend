@@ -4,6 +4,10 @@
       "url": "http://localhost:8000/users/login",
       "method": "POST"
     },
+    "me": {
+      "url": "http://localhost:8000/users/me",
+      "method": "GET"
+    },
     "headers": {
       "Content-Type": "application/json",
       "accept": "*/*"

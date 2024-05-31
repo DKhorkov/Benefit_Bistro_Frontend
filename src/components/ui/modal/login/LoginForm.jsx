@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Form from '../../form/Form.jsx'
 import Label from '../../label/Label'
 import Input from '../../input/Input.jsx'
@@ -5,7 +6,7 @@ import Button from '../../button/Button.jsx'
 import login from '../../../../api/login.js'
 import './LoginForm.css'
 
-export default function LoginForm() {
+export default function LoginForm({ afterLoginFunc }) {
   async function handleSubmit(event) {
     event.preventDefault()
 
@@ -20,6 +21,8 @@ export default function LoginForm() {
     } else {
       alert('Вы были успешно авторизованы!')
     }
+
+    afterLoginFunc()
   }
 
   return (
@@ -39,4 +42,8 @@ export default function LoginForm() {
       <Button buttonType="submit">Отправить</Button>
     </Form>
   )
+}
+
+LoginForm.propTypes = {
+  afterLoginFunc: PropTypes.func.isRequired
 }

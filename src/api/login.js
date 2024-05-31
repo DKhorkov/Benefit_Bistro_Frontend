@@ -11,5 +11,10 @@ export default async function login(username, password) {
     }
   }
 
-  return makeRequest(requestParams.url, requestParams.method, requestParams.body)
+  const response = await makeRequest(requestParams.url, requestParams.method, requestParams.body)
+  if (!response.ok) {
+    throw new Error(response.statusText)
+  }
+
+  return response
 }

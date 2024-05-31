@@ -12,9 +12,6 @@ export default async function makeRequests(url, method = 'get', body = {}, heade
   }
 
   const response = await fetch(url, requestOptions)
-  if (!response.ok) {
-    throw new Error(response.statusText)
-  }
 
   if (toJson) {
     return await response.json()
