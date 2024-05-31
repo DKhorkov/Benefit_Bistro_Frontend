@@ -11,6 +11,7 @@ export default function Header() {
   const [userIsAuthenticated, setUserIsAuthenticated] = useState(false)
 
   useEffect(() => {
+    // using useEffect for async/await purposes and getting state from Promise
     async function getUserAuthenticated() {
       setUserIsAuthenticated(await isUserAuthenticated())
     }
