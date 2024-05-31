@@ -11,12 +11,12 @@ export default function Header() {
   const [userIsAuthenticated, setUserIsAuthenticated] = useState(false)
 
   useEffect(() => {
-    // using useEffect for async/await purposes and getting state from Promise
+    // using useEffect for check if user authenticated
     async function getUserAuthenticated() {
       setUserIsAuthenticated(await isUserAuthenticated())
     }
     getUserAuthenticated()
-  }, [userIsAuthenticated])
+  }, [])
 
   function handleLogin() {
     // content поменяется только после следующего render, так что его использование далее в теле этой функции невозможно
@@ -24,9 +24,9 @@ export default function Header() {
     setLoginModalIsOpen(true)
   }
 
-  function afterLoginFunc() {
+  async function afterLoginFunc() {
     setLoginModalIsOpen(false)
-    setUserIsAuthenticated(true)
+    setUserIsAuthenticated(await isUserAuthenticated())
   }
 
   return (

@@ -13,7 +13,7 @@ export default async function makeRequests(url, method = 'get', body = {}, heade
 
   const response = await fetch(url, requestOptions)
 
-  if (toJson) {
+  if (response.ok && toJson) {
     return await response.json()
   } else {
     return response
